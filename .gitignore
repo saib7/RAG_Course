@@ -1,0 +1,121 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+*.pyo
+*.pyd
+*.so
+build/
+dist/
+wheels/
+*.egg-info/
+*.egg
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.conda/
+
+# UV package manager
+.uv/
+.uv-cache/
+uv.lock.tmp
+
+# Environment variables and configuration
+.env
+.env.local
+.env.*.local
+config.ini
+secrets.json
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*.ipynb_checkpoints
+
+# Data files (large datasets should not be committed)
+*.csv
+*.parquet
+*.h5
+*.hdf5
+*.db
+*.sqlite
+*.sqlite3
+data/processed/
+data/raw/
+data/external/
+!data/sample/
+!data/examples/
+
+# Model files and embeddings
+*.pkl
+*.joblib
+*.model
+*.bin
+*.pt
+*.pth
+*.ckpt
+models/
+embeddings/
+checkpoints/
+vector_stores/
+
+# LangChain and AI-related
+.langchain/
+.chroma/
+faiss_index/
+*.index
+*.vectordb
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs and monitoring
+*.log
+logs/
+wandb/
+mlruns/
+.mlflow/
+
+# Documentation builds
+docs/_build/
+site/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+tmp/
+
+# API keys and sensitive data
+api_keys.txt
+credentials.json
+token.txt
+*.key
+*.pem
+
