@@ -1,299 +1,143 @@
-# 🤖 RAG Course - Advanced Document Processing & Retrieval
+# 🔬 RAG Course - Document Processing & Vector Embeddings R&D
 
-A comprehensive R&D project exploring **Retrieval-Augmented Generation (RAG)** techniques using LangChain, LangGraph, and modern document processing methods.
-
-## 📋 Table of Contents
-- [🎯 Project Overview](#-project-overview)
-- [🚀 Quick Start](#-quick-start)
-- [📦 Installation](#-installation)
-- [🏗️ Project Structure](#️-project-structure)
-- [💻 Usage Guide](#-usage-guide)
-- [📚 Notebooks Overview](#-notebooks-overview)
-- [🛠️ Development](#️-development)
-- [🤝 Contributing](#-contributing)
+A comprehensive **R&D project** implementing production-ready **Retrieval-Augmented Generation (RAG)** pipelines with advanced document processing, vector embeddings, and similarity analysis.
 
 ## 🎯 Project Overview
 
-This project demonstrates advanced **RAG (Retrieval-Augmented Generation)** implementation focusing on:
+This research project provides a complete foundation for RAG applications, covering:
 
-- **Document Ingestion**: PDF, Word, Excel, and web content processing
-- **Smart Parsing**: Advanced text extraction with metadata enhancement
-- **Vector Storage**: Efficient document embedding and retrieval
-- **LangChain Integration**: Production-ready RAG pipelines
-- **LangGraph Workflows**: Complex multi-step reasoning chains
+- **📄 Multi-Format Processing**: PDF, Word, CSV, Excel, JSON, and database integration
+- **🧠 Vector Embeddings**: OpenAI and Google Gemini integration with similarity analysis  
+- **⚡ Production Patterns**: Error handling, batch processing, and performance optimization
+- **📚 Educational Content**: Comprehensive documentation and step-by-step learning modules
 
-### 🔧 Key Technologies
-- **Package Manager**: [UV](https://github.com/astral-sh/uv) (10-100x faster than pip)
-- **Framework**: LangChain, LangGraph, LangSmith
-- **Vector Stores**: ChromaDB, FAISS
-- **ML Libraries**: Sentence Transformers, HuggingFace
-- **Document Processing**: PyMuPDF, PyPDF, python-docx
+### 🔧 Core Technologies
+- **Package Manager**: [UV](https://github.com/astral-sh/uv) for fast dependency management
+- **AI Framework**: LangChain with OpenAI and Google Gemini embeddings
+- **Document Processing**: PyMuPDF, python-docx, pandas, sqlite3
+- **Analysis**: scikit-learn, SciPy, NumPy for similarity computations
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- **Python 3.11+**
-- **UV package manager** ([Install UV](https://docs.astral.sh/uv/getting-started/installation/))
+- **Python 3.11+** with **UV package manager** ([Install UV](https://docs.astral.sh/uv/getting-started/installation/))
+- **API Keys**: OpenAI API key (optional: Google API key for Gemini)
 
-### 1️⃣ Clone & Setup
+### Setup & Installation
 ```bash
-# Clone the repository
-git clone <your-repo-url>
+# Clone and setup environment
+git clone https://github.com/saib7/RAG_Course.git
 cd RAG_Course
+uv sync                          # Install all dependencies
+source .venv/bin/activate        # Activate environment
 
-# Install all dependencies (uses uv.lock for exact versions)
-uv sync
+# Configure API keys
+echo "OPENAI_API_KEY=your_key_here" > .env
 
-# Activate the virtual environment
-source .venv/bin/activate  # Linux/Mac
-# OR
-.venv\Scripts\activate     # Windows
+# Start exploring
+jupyter notebook                 # Launch Jupyter to explore notebooks
 ```
 
-### 2️⃣ Quick Test
-```bash
-# Run a sample notebook
-jupyter notebook 0-DataIngestion_Persing/1-data_ingestion.ipynb
-```
-
-## 📦 Installation
-
-### Using UV (Recommended)
-```bash
-# Install all project dependencies
-uv sync
-
-# Add new packages during development
-uv add package-name
-
-# Update dependencies
-uv lock --upgrade
-```
-
-### Traditional Method (If needed)
-```bash
-# Create virtual environment
-python -m venv .venv
-source .venv/bin/activate
-
-# Install from requirements
-pip install -r requirements.txt
-```
-
-## 🏗️ Project Structure
+## 🏗️ Research Modules
 
 ```
 RAG_Course/
-├── 📁 0-DataIngestion_Persing/
-│   ├── 📓 1-data_ingestion.ipynb      # Basic document loading techniques
-│   ├── 📓 2-data_parsing_pdf.ipynb    # Advanced PDF processing
-│   └── 📁 data/
-│       ├── 📁 pdf/                    # Sample PDF documents
-│       │   └── attention.pdf
-│       └── 📁 text_files/             # Sample text files
-│           ├── machine_learning.txt
-│           └── python_intro.txt
-├── 📄 main.py                         # Main application entry point
-├── 📄 pyproject.toml                  # Project configuration & dependencies
-├── 📄 uv.lock                         # Exact dependency versions
-├── 📄 requirements.txt                # Pip compatibility
-└── 📄 README.md                       # This file
+├── 📁 1.Data_Ingest_Parsing/              # Complete document processing pipeline
+│   ├── 📓 1-data_ingestion.ipynb          # ✅ Document loading fundamentals  
+│   ├── 📓 2-data_parsing_pdf.ipynb        # ✅ Advanced PDF processing
+│   ├── � 3-data_parsing_doc.ipynb        # ✅ Word document handling
+│   ├── 📓 4-data_parsing_csv_excel.ipynb  # ✅ Structured data processing
+│   ├── � 5-data_parsing_json.ipynb       # ✅ JSON/JSONL processing  
+│   ├── 📓 6-data_parsing_database.ipynb   # ✅ Database integration
+│   └── � data/                           # Sample datasets for all formats
+├── � 2.Vector_Embedding/                 # Vector analysis & similarity
+│   ├── � 1-embeddings.ipynb              # ✅ Basic embedding concepts
+│   └── 📓 2-openai_gemini_embeddings.ipynb # ✅ Advanced similarity analysis
+└── � 0-DataIngestion_Persing/            # Initial experiments (legacy)
 ```
 
-## 💻 Usage Guide
+### 🎯 Key Research Areas
+- **📄 Document Processing**: Complete pipeline for PDF, Word, CSV, Excel, JSON, databases
+- **🧠 Vector Embeddings**: OpenAI and Gemini integration with similarity analysis
+- **⚡ Performance Analysis**: Memory usage, processing time, and optimization patterns
+- **🏭 Production Ready**: Error handling, validation, and enterprise patterns
 
-### 🔍 Document Processing Workflow
+## 💻 Usage Examples
 
-1. **Data Ingestion**
-   ```python
-   # Load various document types
-   from langchain_community.document_loaders import PyMuPDFLoader
-   
-   loader = PyMuPDFLoader("data/pdf/document.pdf")
-   documents = loader.load()
-   ```
-
-2. **Smart Processing**
-   ```python
-   # Use advanced processors with metadata enhancement
-   processor = SmartPDFProcessor2(chunk_size=800, chunk_overlap=150)
-   processed_docs = processor.process_pdf("data/pdf/document.pdf")
-   ```
-
-3. **Vector Storage**
-   ```python
-   # Create embeddings and store in vector database
-   from langchain_community.vectorstores import Chroma
-   
-   vectorstore = Chroma.from_documents(processed_docs, embeddings)
-   ```
-
-### 🧪 Running Experiments
-
-```bash
-# Start Jupyter for interactive development
-jupyter notebook
-
-# Run specific processing pipeline
-python main.py --input data/pdf/ --output processed/
-
-# Process single document
-python -c "
-from processors import SmartPDFProcessor2
-processor = SmartPDFProcessor2()
-docs = processor.process_pdf('data/pdf/attention.pdf')
-print(f'Processed {len(docs)} chunks')
-"
-```
-
-## 📚 Notebooks Overview
-
-### 🔬 Research & Development Notebooks
-
-| Notebook | Description | Key Features |
-|----------|-------------|--------------|
-| **1-data_ingestion.ipynb** | Document loading fundamentals | • Multiple loader types<br>• Basic chunking strategies<br>• Metadata handling |
-| **2-data_parsing_pdf.ipynb** | Advanced PDF processing | • PyMuPDF integration<br>• Image handling<br>• Content analysis<br>• Quality assessment |
-
-### 🎯 Learning Objectives
-
-Each notebook includes:
-- **📖 Conceptual explanations** with real-world context
-- **💻 Hands-on code examples** with detailed comments
-- **🔍 Comparative analysis** of different approaches
-- **🛠️ Best practices** for production usage
-- **❗ Common pitfalls** and troubleshooting tips
-
-## 🛠️ Development
-
-### 🔄 Environment Management
-```bash
-# Sync environment (install exact versions from uv.lock)
-uv sync
-
-# Add development dependencies
-uv add --dev pytest black flake8 mypy
-
-# Update all dependencies
-uv lock --upgrade
-
-# Check dependency tree
-uv tree
-```
-
-### 🧪 Testing & Quality
-```bash
-# Install test dependencies
-uv add --dev pytest pytest-cov
-
-# Run tests
-uv run pytest
-
-# Code formatting
-uv run black .
-
-# Type checking
-uv run mypy .
-```
-
-### 📝 Adding New Dependencies
-```bash
-# Add ML/AI packages
-uv add transformers torch sentence-transformers
-
-# Add development tools
-uv add --dev jupyter ipykernel
-
-# Add specific versions
-uv add "langchain>=0.3.0,<0.4.0"
-```
-
-## 🔧 Configuration
-
-### Environment Variables
-Create a `.env` file for configuration:
-```bash
-# API Keys
-OPENAI_API_KEY=your_openai_key
-HUGGINGFACE_API_TOKEN=your_hf_token
-
-# Model Settings
-DEFAULT_EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
-CHUNK_SIZE=1000
-CHUNK_OVERLAP=200
-
-# Vector Store
-VECTOR_STORE_PATH=./vector_stores
-```
-
-### Custom Settings
+### Document Processing
 ```python
-# config.py
-PROCESSING_CONFIG = {
-    "pdf_processor": "PyMuPDFLoader",
-    "chunk_size": 800,
-    "chunk_overlap": 150,
-    "include_images": True,
-    "quality_threshold": "medium"
-}
+# Multi-format document loading
+from langchain_community.document_loaders import PyMuPDFLoader, CSVLoader, JSONLoader
+
+# Load different document types
+pdf_docs = PyMuPDFLoader("1.Data_Ingest_Parsing/data/pdf/attention.pdf").load()
+csv_docs = CSVLoader("1.Data_Ingest_Parsing/data/structured_files/products.csv").load()
+json_docs = JSONLoader("1.Data_Ingest_Parsing/data/json_files/company_data.json").load()
 ```
 
-## 🚀 Production Deployment
+### Vector Embeddings & Similarity Analysis
+```python
+# Generate embeddings and calculate similarities
+from langchain_openai import OpenAIEmbeddings
+from sklearn.metrics.pairwise import cosine_similarity
 
-### Docker Setup
-```dockerfile
-FROM python:3.11-slim
+embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+sentence_embeddings = embeddings.embed_documents([
+    "Machine learning transforms technology",
+    "AI revolutionizes computing", 
+    "The weather is nice today"
+])
 
-WORKDIR /app
-COPY pyproject.toml uv.lock ./
-
-# Install UV and dependencies
-RUN pip install uv && uv sync --frozen
-
-COPY . .
-CMD ["uv", "run", "python", "main.py"]
+# Calculate similarity matrix
+import numpy as np
+similarity_matrix = cosine_similarity(np.array(sentence_embeddings))
+print("Most similar:", similarity_matrix[0][1])  # Compare first two sentences
 ```
 
-### Performance Optimization
-- **UV Benefits**: 10-100x faster dependency resolution
-- **Caching**: UV automatically caches packages
-- **Reproducibility**: `uv.lock` ensures consistent environments
-- **Memory Efficiency**: Optimized for large ML dependencies
+## 📊 Research Highlights
 
-## 🤝 Contributing
+### Similarity Analysis Comparison
+| Method | Use Case | Performance | Implementation |
+|--------|----------|-------------|----------------|
+| **Manual** | Learning/Education | Slow | `np.dot(v1,v2)/(norm(v1)*norm(v2))` |
+| **SciPy** | Individual pairs | Medium | `1 - cosine(v1, v2)` |
+| **Scikit-learn** | Batch processing | Fast | `cosine_similarity(matrix)` |
 
-### Development Workflow
-1. **Fork & Clone**: Get your own copy
-2. **Environment**: `uv sync` to install dependencies
-3. **Branch**: Create feature branch
-4. **Develop**: Make changes with proper documentation
-5. **Test**: Ensure all notebooks run successfully
-6. **PR**: Submit with clear description
+### Document Format Coverage
+- **✅ PDF**: PyMuPDF with image extraction and metadata
+- **✅ Word**: Docx2txt and UnstructuredWord loaders  
+- **✅ Structured**: CSV/Excel with pandas integration
+- **✅ JSON**: Nested structure handling and JSONL streaming
+- **✅ Database**: SQLite with relationship preservation and security patterns
 
-### Code Standards
-- **Documentation**: Comprehensive docstrings and comments
-- **Notebooks**: Clear explanations and educational content
-- **Dependencies**: Use `uv add` for new packages
-- **Commits**: Descriptive commit messages
+## �️ Development & Extension
 
-## 📄 License
+### Environment Management
+```bash
+uv sync                    # Install exact dependencies from lock file
+uv add package-name        # Add new packages  
+uv add --dev pytest        # Add development tools
+uv lock --upgrade          # Update all dependencies
+```
 
-This project is for educational and research purposes. See course materials for specific licensing terms.
+### Adding New Research
+- **New document formats**: Extend the parsing pipeline in `1.Data_Ingest_Parsing/`
+- **New embedding providers**: Add to `2.Vector_Embedding/` with comparison analysis
+- **Performance optimizations**: Include benchmarking and memory usage analysis
+- **Educational content**: Maintain comprehensive documentation and examples
 
-## 🆘 Support
+## 📄 License & Usage
 
-### Common Issues
-- **UV Installation**: [Official UV docs](https://docs.astral.sh/uv/)
-- **Dependency Conflicts**: `uv sync --refresh`
-- **Notebook Kernel**: `uv run python -m ipykernel install --user`
+This R&D project is designed for **educational and research purposes**. All notebooks include comprehensive documentation, performance analysis, and production-ready patterns.
 
-### Getting Help
-- **Documentation**: Check notebook explanations first
-- **Dependencies**: Review `pyproject.toml` for version info
-- **Performance**: UV provides detailed timing information
+**Key Features:**
+- 🔬 **Research-focused**: Comparative analysis and performance benchmarking
+- 📚 **Educational**: Step-by-step learning with detailed explanations  
+- � **Production-ready**: Error handling, validation, and optimization patterns
+- ⚡ **Performance-aware**: Memory usage and processing time monitoring
 
 ---
 
-**Happy Learning! 🎓**
+**Start exploring:** `jupyter notebook` → Navigate to `1.Data_Ingest_Parsing/1-data_ingestion.ipynb`
 
-*Built with ❤️ using UV, LangChain, and modern Python practices*
+*Built with ❤️ using UV, LangChain, OpenAI, and modern Python practices*
