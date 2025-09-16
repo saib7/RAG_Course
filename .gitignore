@@ -25,6 +25,9 @@ venv.bak/
 .uv-cache/
 uv.lock.tmp
 
+# Python version management
+.python-version
+
 # Environment variables and configuration
 .env
 .env.local
@@ -67,9 +70,13 @@ vector_stores/
 # LangChain and AI-related
 .langchain/
 .chroma/
+chroma_db/
 faiss_index/
 *.index
 *.vectordb
+
+# Generated document files (temporary/test files)
+doc_*.txt
 
 # IDE and editor files
 .vscode/
@@ -79,6 +86,9 @@ faiss_index/
 *~
 .DS_Store
 Thumbs.db
+
+# Office/Word temporary files
+~$*
 
 # Logs and monitoring
 *.log
