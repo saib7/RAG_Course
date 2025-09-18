@@ -20,10 +20,11 @@ env.bak/
 venv.bak/
 .conda/
 
-# UV package manager
+# UV package manager (modern Python dependency manager)
 .uv/
 .uv-cache/
 uv.lock.tmp
+uv.lock.backup*
 
 # Python version management
 .python-version
@@ -32,15 +33,22 @@ uv.lock.tmp
 .env
 .env.local
 .env.*.local
+.env.production
+.env.development
+.env.test
 config.ini
 secrets.json
+*.api_key
+api_config.json
 
 # Jupyter Notebook
 .ipynb_checkpoints/
 */.ipynb_checkpoints/*
 *.ipynb_checkpoints
+# Jupyter notebook outputs that change frequently
+*-checkpoint.ipynb
 
-# Data files (large datasets should not be committed)
+# Data files (large datasets and generated files should not be committed)
 *.csv
 *.parquet
 *.h5
@@ -53,6 +61,9 @@ data/raw/
 data/external/
 !data/sample/
 !data/examples/
+# Keep small example/reference data files
+!*/data/text_files/
+!*/data/pdf/attention.pdf
 
 # Model files and embeddings
 *.pkl
@@ -67,16 +78,37 @@ embeddings/
 checkpoints/
 vector_stores/
 
-# LangChain and AI-related
+# Vector Databases and Indexes (RAG-specific)
 .langchain/
 .chroma/
 chroma_db/
+chromadb/
 faiss_index/
+pinecone_index/
+weaviate_data/
 *.index
+*.faiss
 *.vectordb
+*.annoy
+# ChromaDB specific files
+chroma.sqlite3
+*/chroma_db/
+# FAISS specific files
+*.faiss
+index.pkl
+*/faiss_index/
 
 # Generated document files (temporary/test files)
 doc_*.txt
+*/doc_*.txt
+# Temporary processing files
+temp_*.txt
+processed_*.txt
+output_*.txt
+
+# Office/Word temporary files (Office auto-save files)
+~$*
+*.tmp
 
 # IDE and editor files
 .vscode/
@@ -86,9 +118,6 @@ doc_*.txt
 *~
 .DS_Store
 Thumbs.db
-
-# Office/Word temporary files
-~$*
 
 # Logs and monitoring
 *.log
@@ -122,10 +151,37 @@ Thumbs.db
 .cache/
 tmp/
 
+# RAG and LangChain specific generated files
+# Generated sample/test data
+langchain-*.txt
+sample_*.txt
+test_*.txt
+# LangChain cache and traces
+.langchain_cache/
+langchain_cache/
+traces/
+# Embedding cache files
+embedding_cache/
+.embedding_cache/
+# RAG pipeline outputs
+rag_outputs/
+retrieval_results/
+
 # API keys and sensitive data
 api_keys.txt
 credentials.json
 token.txt
 *.key
 *.pem
+.env*
+!.env.example
+!.env.template
+# Google API specific
+google_credentials.json
+service_account.json
+# OpenAI specific
+openai_api_key.txt
+# Any API configuration files
+*_config.json
+*_credentials.*
 
