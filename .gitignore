@@ -1,15 +1,32 @@
-# Python-generated files
+# =============================================================================
+# PYTHON & ENVIRONMENT
+# =============================================================================
+
+# Python bytecode and compiled files
 __pycache__/
-*.py[oc]
+*.py[cod]
+*$py.class
 *.pyo
 *.pyd
 *.so
-build/
-dist/
-wheels/
-*.egg-info/
-*.egg
 .Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
 # Virtual environments
 .venv/
@@ -36,34 +53,35 @@ uv.lock.backup*
 .env.production
 .env.development
 .env.test
+.envrc
 config.ini
 secrets.json
 *.api_key
 api_config.json
+credentials/
 
-# Jupyter Notebook
+# =============================================================================
+# JUPYTER NOTEBOOK
+# =============================================================================
+
+# Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 */.ipynb_checkpoints/*
 *.ipynb_checkpoints
+
 # Jupyter notebook outputs that change frequently
 *-checkpoint.ipynb
 
-# Data files (large datasets and generated files should not be committed)
-*.csv
-*.parquet
-*.h5
-*.hdf5
-*.db
-*.sqlite
-*.sqlite3
-data/processed/
-data/raw/
-data/external/
-!data/sample/
-!data/examples/
-# Keep small example/reference data files
-!*/data/text_files/
-!*/data/pdf/attention.pdf
+# Jupyter notebook metadata and outputs (optional - uncomment if needed)
+# *.ipynb
+
+# IPython
+profile_default/
+ipython_config.py
+
+# =============================================================================
+# RAG & AI/ML SPECIFIC
+# =============================================================================
 
 # Model files and embeddings
 *.pkl
@@ -73,12 +91,16 @@ data/external/
 *.pt
 *.pth
 *.ckpt
+*.h5
+*.hdf5
+*.safetensors
 models/
 embeddings/
 checkpoints/
 vector_stores/
+model_cache/
 
-# Vector Databases and Indexes (RAG-specific)
+# Vector Databases and Indexes
 .langchain/
 .chroma/
 chroma_db/
@@ -90,13 +112,17 @@ weaviate_data/
 *.faiss
 *.vectordb
 *.annoy
+
 # ChromaDB specific files
 chroma.sqlite3
 */chroma_db/
+**/chroma_db/
+
 # FAISS specific files
 *.faiss
 index.pkl
 */faiss_index/
+**/faiss_index/
 
 # Generated document files (temporary/test files)
 doc_*.txt
@@ -105,54 +131,9 @@ doc_*.txt
 temp_*.txt
 processed_*.txt
 output_*.txt
-
-# Office/Word temporary files (Office auto-save files)
-~$*
-*.tmp
-
-# IDE and editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-Thumbs.db
-
-# Logs and monitoring
-*.log
-logs/
-wandb/
-mlruns/
-.mlflow/
-
-# Documentation builds
-docs/_build/
-site/
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Temporary files
-*.tmp
-*.temp
-.cache/
-tmp/
+generated_*.txt
 
 # RAG and LangChain specific generated files
-# Generated sample/test data
 langchain-*.txt
 sample_*.txt
 test_*.txt
@@ -166,6 +147,208 @@ embedding_cache/
 # RAG pipeline outputs
 rag_outputs/
 retrieval_results/
+search_results/
+inference_cache/
+
+# AI/ML experiment tracking
+wandb/
+mlruns/
+.mlflow/
+experiments/
+runs/
+
+# =============================================================================
+# DATA FILES
+# =============================================================================
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+company.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Large datasets and generated files (keep examples)
+data/processed/
+data/raw/
+data/external/
+data/cache/
+!data/sample/
+!data/examples/
+
+# Keep small example/reference data files but ignore large ones
+!*/data/text_files/
+!*/data/pdf/attention.pdf
+# Ignore large CSV/Excel files but allow small examples
+*.csv
+*.parquet
+# Allow specific small example files (uncomment as needed)
+# !data/examples/*.csv
+# !**/inventory.xlsx
+
+# JSON files - be selective
+*.jsonl
+# Keep configuration JSON files
+!config*.json
+!settings*.json
+!package*.json
+!**/company_data.json
+!**/events.jsonl
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# =============================================================================
+# OFFICE & DOCUMENT FILES
+# =============================================================================
+
+# Office/Word temporary files (Office auto-save files)
+~$*
+.~*
+*.tmp
+
+# Excel temporary files
+.~lock.*
+
+# Document backups
+*.bak
+*~
+
+# =============================================================================
+# IDE & EDITOR FILES
+# =============================================================================
+
+# VS Code
+.vscode/
+.vscode-test/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Other IDEs
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# =============================================================================
+# SYSTEM & OS FILES
+# =============================================================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# =============================================================================
+# LOGS & MONITORING
+# =============================================================================
+
+# Logs
+*.log
+logs/
+log/
+
+# Monitoring and telemetry
+wandb/
+mlruns/
+.mlflow/
+.neptune/
+
+# =============================================================================
+# DOCUMENTATION & BUILD
+# =============================================================================
+
+# Documentation builds
+docs/_build/
+docs/build/
+site/
+.readthedocs.yml
+
+# Sphinx documentation
+_build/
+_static/
+_templates/
+
+# =============================================================================
+# TESTING & QUALITY
+# =============================================================================
+
+# Testing
+.pytest_cache/
+.coverage
+.coveragerc
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# =============================================================================
+# TEMPORARY & CACHE FILES
+# =============================================================================
+
+# General temporary files
+*.tmp
+*.temp
+.cache/
+tmp/
+temp/
+
+# Python caches
+.pytest_cache/
+.mypy_cache/
+
+# Node.js (if any JS tooling is used)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =============================================================================
+# API KEYS & SENSITIVE DATA
+# =============================================================================
 
 # API keys and sensitive data
 api_keys.txt
@@ -176,12 +359,108 @@ token.txt
 .env*
 !.env.example
 !.env.template
+
 # Google API specific
 google_credentials.json
 service_account.json
+service-account.json
+
 # OpenAI specific
 openai_api_key.txt
+
 # Any API configuration files
 *_config.json
 *_credentials.*
+*_secrets.*
+
+# Security files
+*.p12
+*.keystore
+auth.json
+
+# =============================================================================
+# RAG COURSE SPECIFIC
+# =============================================================================
+
+# Generated files from course exercises
+**/doc_0.txt
+**/doc_1.txt
+**/doc_2.txt
+
+# Course specific generated datasets
+langchain-rag-dataset.txt
+langchain-sample.txt
+langchain_crewai_dataset.txt
+
+# Multimodal files that might be generated
+generated_*.jpg
+generated_*.png
+processed_*.pdf
+
+# Course backup files
+**/25 - *.ipynb
+**/*copy.ipynb
+**/* copy.ipynb
+
+# =============================================================================
+# PERFORMANCE & PROFILING
+# =============================================================================
+
+# Profiling data
+*.prof
+*.pstats
+.profraw
+
+# Memory profiling
+*.mprofile
+
+# =============================================================================
+# PACKAGE MANAGERS & LOCK FILES (SELECTIVE)
+# =============================================================================
+
+# Keep important lock files but ignore temporaries
+!uv.lock
+!requirements.txt
+!pyproject.toml
+# But ignore backup versions
+uv.lock.bak
+requirements.txt.bak
+pyproject.toml.bak
+
+# Conda
+.conda/
+environment.yml.bak
+
+# =============================================================================
+# MISCELLANEOUS
+# =============================================================================
+
+# Jupyter notebook outputs (uncomment if you want to exclude all outputs)
+# Cell outputs can make diffs noisy
+# *.ipynb
+
+# Large binary files that might be accidentally added
+*.bin
+*.exe
+*.dll
+*.dylib
+
+# Backup files from various editors
+*~
+*.bak
+*.backup
+*.orig
+*.rej
+
+# Patch files
+*.patch
+*.diff
+
+# Archive extractions
+extracted/
+unzipped/
+
+# Custom ignore patterns (add your own here)
+# local_config.py
+# my_experiments/
 
