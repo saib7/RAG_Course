@@ -5,6 +5,7 @@ aiohttp-retry==2.9.1
 aiosignal==1.4.0
 annotated-types==0.7.0
 anyio==4.10.0
+appdirs==1.4.4
 asttokens==3.0.0
 attrs==25.3.0
 backoff==2.2.1
@@ -47,6 +48,7 @@ google-auth==2.40.2
 google-auth-httplib2==0.2.0
 google-generativeai==0.8.5
 googleapis-common-protos==1.70.0
+graphviz==0.21
 greenlet==3.2.4
 grpcio==1.74.0
 grpcio-status==1.71.2
@@ -161,11 +163,14 @@ pycparser==2.23
 pydantic==2.11.7
 pydantic-core==2.33.2
 pydantic-settings==2.10.1
+pydot==4.0.1
+pyee==11.1.1
 pygments==2.19.2
 pymupdf==1.26.4
 pyparsing==3.2.3
 pypdf==6.0.0
 pypika==0.48.9
+pyppeteer==2.0.0
 pyproject-hooks==1.2.0
 python-dateutil==2.9.0.post0
 python-docx==1.2.0
@@ -218,14 +223,14 @@ tzdata==2025.2
 unstructured==0.18.14
 unstructured-client==0.42.3
 uritemplate==4.2.0
-urllib3==2.5.0
+urllib3==1.26.20
 uvicorn==0.35.0
 uvloop==0.21.0
 watchfiles==1.1.0
 wcwidth==0.2.13
 webencodings==0.5.1
 websocket-client==1.8.0
-websockets==15.0.1
+websockets==10.4
 wrapt==1.17.3
 xxhash==3.5.0
 yarl==1.20.1
